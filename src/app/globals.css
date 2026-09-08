@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --surface: #ffffff;
+  --border: rgba(24, 24, 27, 0.08);
+  --hero-bg: #09090b;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;
+  --surface: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+  --hero-bg: #09090b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-zinc-900 via-indigo-700 to-purple-700 bg-clip-text text-transparent dark:from-white dark:via-indigo-200 dark:to-purple-300;
+  }
+
+  .text-gradient-hero {
+    @apply bg-gradient-to-r from-white via-indigo-200 to-purple-300 bg-clip-text text-transparent;
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .glass {
+    @apply border border-zinc-200/80 bg-white/70 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-white/[0.04] dark:shadow-none;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-zinc-300 hover:bg-white hover:shadow-md dark:hover:border-white/20 dark:hover:bg-white/[0.06];
+  }
+
+  .glass-hero {
+    @apply border border-white/10 bg-zinc-950/40 backdrop-blur-md;
+  }
+
+  .section-padding {
+    @apply px-6 py-24 md:px-12 lg:px-20 xl:px-28;
+  }
+
+  .shell-x {
+    @apply px-[max(1.5rem,env(safe-area-inset-left,0px))] pr-[max(1.5rem,env(safe-area-inset-right,0px))] md:px-12 lg:px-20 xl:px-28;
+  }
+
+  .shell-x-inner {
+    @apply mx-auto w-full max-w-6xl;
+  }
+
+  .bento-spotlight {
+    --bento-spot-x: var(--mouse-x, 50%);
+    --bento-spot-y: var(--mouse-y, 50%);
+    background:
+      radial-gradient(
+        720px circle at var(--bento-spot-x) var(--bento-spot-y),
+        rgba(99, 102, 241, 0.11),
+        transparent 44%
+      ),
+      linear-gradient(165deg, #ffffff 0%, #fafafa 100%);
+    transition: box-shadow 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dark .bento-spotlight {
+    background:
+      radial-gradient(
+        720px circle at var(--bento-spot-x) var(--bento-spot-y),
+        rgba(129, 140, 248, 0.14),
+        transparent 44%
+      ),
+      linear-gradient(
+        165deg,
+        rgba(39, 39, 42, 0.72) 0%,
+        rgba(9, 9, 11, 0.92) 100%
+      );
+  }
+
+  .bento-visual {
+    @apply relative h-full min-h-[128px] overflow-hidden rounded-[1.35rem];
+    background: linear-gradient(
+      145deg,
+      rgba(244, 244, 245, 0.95) 0%,
+      rgba(250, 250, 250, 0.85) 45%,
+      rgba(238, 242, 255, 0.75) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .dark .bento-visual {
+    background: linear-gradient(
+      145deg,
+      rgba(39, 39, 42, 0.65) 0%,
+      rgba(9, 9, 11, 0.85) 50%,
+      rgba(49, 46, 129, 0.22) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .projects-preview-mask {
+    mask-image: linear-gradient(to left, black 30%, transparent 100%);
+  }
+
+  .menu-shell-item {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: menu-item-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(0.12s + var(--menu-i) * 0.07s);
+  }
+
+  .menu-shell-item--foot {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: menu-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(0.12s + var(--menu-i) * 0.07s);
+  }
+
+  .animate-project-reveal {
+    animation: project-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes menu-item-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes project-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-shell-item,
+  .menu-shell-item--foot,
+  .animate-project-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

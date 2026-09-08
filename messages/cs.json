@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Ondřej Všetička — Software Developer",
+    "description": "Software Developer se zaměřením na vysoce výkonné React/Next.js aplikace a interaktivní 3D webové zážitky."
+  },
+  "nav": {
+    "about": "O mně",
+    "experience": "Zkušenosti",
+    "projects": "Projekty",
+    "contact": "Kontakt",
+    "mainNav": "Hlavní navigace",
+    "mobileNav": "Mobilní navigace",
+    "openMenu": "Otevřít menu",
+    "closeMenu": "Zavřít menu"
+  },
+  "hero": {
+    "eyebrow": "Software Developer",
+    "title": "Posouvám hranice toho, co dokáže webový prohlížeč.",
+    "subtitle": "Jsem Ondřej Všetička. Stavím vysoce výkonné aplikace v Reactu a Next.js — od precizního UI až po interaktivní 3D přímo v prohlížeči.",
+    "ctaWork": "Prozkoumat práci",
+    "ctaContact": "Navázat spolupráci",
+    "hint": "React · Next.js · TypeScript · Babylon.js"
+  },
+  "bento": {
+    "eyebrow": "Zkušenosti",
+    "title": "Technologie, které posouvají produkty vpřed",
+    "frontendTitle": "Pixel-perfect UI & výkon",
+    "frontendDescription": "Stavím na TypeScriptu, Reactu a Next.js. Tvořím rozhraní, která jsou bleskově rychlá a udržitelná i při obrovském škálování.",
+    "threeDTitle": "3D na webu bez kompromisů",
+    "threeDDescription": "Pomocí Babylon.JS přenáším složité 3D modely, prostorové výpočty a konfigurátory přímo do prohlížeče uživatele.",
+    "fullstackTitle": "Full-stack přesah",
+    "fullstackDescription": "Frontend bez silného základu nefunguje. Navrhuji API a datové toky pomocí Node.js, NestJS a GraphQL. Integruji moderní headless CMS jako Sanity."
+  },
+  "projects": {
+    "eyebrow": "Projekty",
+    "title": "Vybraná práce",
+    "subtitle": "Weby a aplikace, které jsem navrhoval a vyvíjel — od obsahových platforem po klientské weby na míru.",
+    "visitSite": "Navštívit web",
+    "paletteLabel": "Barevná paleta webu",
+    "paletteRoles": ["Hlavní", "Doplňková", "Pozadí"],
+    "items": {
+      "abivia": {
+        "title": "abivia.cz",
+        "client": "Advokátní kancelář — oddlužení a insolvence",
+        "description": "Rozsáhlý web advokátní kanceláře pro oddlužení a insolvenci — kalkulačka, mapa poradců, reference, blog a konverzní landingy.",
+        "services": ["Web design", "Vývoj", "CMS", "Landingy"]
+      },
+      "podpustevnami": {
+        "title": "Kemp pod Pustevnami",
+        "client": "Kemp v Beskydech — Prostřední Bečva",
+        "description": "Prezentace kempu v Beskydech — ubytování, ceník, fotogalerie, tipy na výlety a online rezervace chat.",
+        "services": ["Web design", "Vývoj", "Rezervace", "SEO"]
+      },
+      "zvonice": {
+        "title": "zvonice.eu",
+        "client": "Prezentační web",
+        "description": "Web pro projekt Zvonice — čistá prezentace, responzivní layout a důraz na čitelnost napříč zařízeními.",
+        "services": ["Web design", "Vývoj", "Responze"]
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Služby",
+    "title": "Co pro vás mohu postavit",
+    "items": {
+      "webApps": {
+        "title": "Custom Webové Aplikace",
+        "description": "Od architektury databází až po responzivní frontend. Stavím nástroje, které řeší reálné byznys problémy."
+      },
+      "threeD": {
+        "title": "Interaktivní 3D & Konfigurátory",
+        "description": "Odlíšení od konkurence pomocí 3D grafiky přímo v prohlížeči."
+      },
+      "optimization": {
+        "title": "Revitalizace a Optimalizace",
+        "description": "Refaktoring kódu, zrychlení načítání a hladké napojení na moderní API."
+      }
+    }
+  },
+  "footer": {
+    "title": "Máte projekt, který vyžaduje moderní přístup?",
+    "subtitle": "Ať už jde o složitou webovou aplikaci nebo integraci 3D prvků, pojďme to probrat.",
+    "cta": "Napsat e-mail",
+    "copyright": "Ondřej Všetička",
+    "portraitAlt": "Ondřej Všetička — software developer",
+    "tagline": "Software developer se zaměřením na výkonné React/Next.js aplikace a interaktivní 3D na webu.",
+    "stack": "React · Next.js · TypeScript · Babylon.js",
+    "navigation": "Navigace",
+    "connect": "Kontakt",
+    "rights": "Všechna práva vyhrazena.",
+    "backToTop": "Zpět nahoru"
+  }
+}

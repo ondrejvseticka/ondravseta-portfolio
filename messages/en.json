@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Ondřej Všetička — Software Developer",
+    "description": "Software Developer focused on high-performance React/Next.js applications and interactive 3D web experiences."
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "eyebrow": "Software Developer",
+    "title": "Pushing the limits of what the web browser can do.",
+    "subtitle": "I'm Ondřej Všetička. I build high-performance applications with React and Next.js — from precise UI to interactive 3D, directly in the browser.",
+    "ctaWork": "Explore my work",
+    "ctaContact": "Start a collaboration",
+    "hint": "React · Next.js · TypeScript · Babylon.js"
+  },
+  "bento": {
+    "eyebrow": "Experience",
+    "title": "Technologies that move products forward",
+    "frontendTitle": "Pixel-perfect UI & performance",
+    "frontendDescription": "I build with TypeScript, React, and Next.js — interfaces that stay fast and maintainable even at massive scale.",
+    "threeDTitle": "3D on the web, no compromises",
+    "threeDDescription": "With Babylon.JS I bring complex 3D models, spatial calculations, and configurators directly into the user's browser.",
+    "fullstackTitle": "Full-stack reach",
+    "fullstackDescription": "Frontend doesn't work without a solid foundation. I design APIs and data flows with Node.js, NestJS, and GraphQL, and integrate modern headless CMS like Sanity."
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "Selected work",
+    "subtitle": "Websites and applications I've designed and built — from content platforms to custom client sites.",
+    "visitSite": "Visit site",
+    "paletteLabel": "Site color palette",
+    "paletteRoles": ["Primary", "Secondary", "Background"],
+    "items": {
+      "abivia": {
+        "title": "abivia.cz",
+        "client": "Law firm — debt relief and insolvency",
+        "description": "Large-scale site for an insolvency law firm — debt relief calculator, advisor map, testimonials, blog, and conversion-focused landing pages.",
+        "services": ["Web design", "Development", "CMS", "Landing pages"]
+      },
+      "podpustevnami": {
+        "title": "Kemp pod Pustevnami",
+        "client": "Campground in the Beskydy — Prostřední Bečva",
+        "description": "Campground website in the Beskydy mountains — accommodation, pricing, photo gallery, local trip tips, and online cabin booking.",
+        "services": ["Web design", "Development", "Booking", "SEO"]
+      },
+      "zvonice": {
+        "title": "zvonice.eu",
+        "client": "Presentation website",
+        "description": "Website for the Zvonice project — clean presentation, responsive layout, and readability across devices.",
+        "services": ["Web design", "Development", "Responsive UI"]
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "What I can build for you",
+    "items": {
+      "webApps": {
+        "title": "Custom Web Applications",
+        "description": "From database architecture to responsive frontend — tools that solve real business problems."
+      },
+      "threeD": {
+        "title": "Interactive 3D & Configurators",
+        "description": "Stand out from the competition with 3D graphics running directly in the browser."
+      },
+      "optimization": {
+        "title": "Revitalization & Optimization",
+        "description": "Code refactoring, faster load times, and smooth integration with modern APIs."
+      }
+    }
+  },
+  "footer": {
+    "title": "Have a project that needs a modern approach?",
+    "subtitle": "Whether it's a complex web application or 3D integration, let's talk.",
+    "cta": "Send an email",
+    "copyright": "Ondřej Všetička",
+    "portraitAlt": "Ondřej Všetička — software developer",
+    "tagline": "Software developer focused on high-performance React/Next.js applications and interactive 3D on the web.",
+    "stack": "React · Next.js · TypeScript · Babylon.js",
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top"
+  }
+}

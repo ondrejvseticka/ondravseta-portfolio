@@ -1,92 +1,131 @@
-import styles from '@/styles/Animation.module.css';
-import Style from '@/styles/Text.module.css';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+"use client";
 
-const buttons = [
-    { title: 'Portfolio', target: '#Projects' },
-    { title: 'Kontakt', target: '#Contact' },
-];
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
-export default function Hero() {
-    return (
-        <>
-            <div className="overflow-hidden w-full px-8 md:min-h-screen min-h-0 md:mt-0 mt-32">
-                <motion.div className="container mx-auto flex lg:flex-row flex-col items-center lg:items-start justify-between lg:mt-40">
-                    <div className="flex flex-col items-center md:items-start">
-                        <motion.h1
-                            initial={{ opacity: 0, y: '25%' }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                            viewport={{ once: true }}
-                            className="leading-tight relative text-center md:text-start text-5xl md:text-6xl font-bold"
-                        >
-                            <span className='leading-tight before:absolute before:left-0 before:w-full before:content-["Dobrý_den👋,_jmenuji_se"]'>
-                                <span
-                                    className={`${Style.AnimatedText} bg-gradient-to-r from-[#576CBC] to-purple-600 bg-clip-text text-transparent`}
-                                >
-                                    Dobrý den👋, jmenuji se
-                                </span>
-                            </span>
-                            <br />
-                            <span
-                                className='before:absolute leading-tight
-            before:left-0 before:content-["_Ondřej_Všetička"] before:w-full '
-                            >
-                                <span
-                                    className={`${Style.AnimatedText2} bg-gradient-to-r from-purple-700 to-[#576CBC] dark:from-white  dark:to-[#576CBC] bg-clip-text text-transparent`}
-                                >
-                                    Ondřej Všetička
-                                </span>
-                            </span>
+import { Button } from "@/components/ui/Button";
+import { CloudShader } from "@/components/ui/cloud-shader";
+import { SpaceShader } from "@/components/ui/space-shader";
+import { cn } from "@/lib/utils";
 
-                        </motion.h1>
-                        <motion.p
-                            initial={{ opacity: 0, y: '25%' }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.6 }}
-                            viewport={{ once: true }}
-                            className="md:text-lg text-base dark:text-white text-black/70 font-semibold mt-3 mb-8 max-w-[80%] md:max-w-[60%] text-center md:text-start"
-                        >
-                            Jsem frontend vývojář s citem pro design. Pokud pohledáváte webovou aplikaci nebo prezentaci pro vás, či vaši společnost, jste na správném místě.
-                        </motion.p>
-                        <motion.div
-                            initial={{ opacity: 0, y: '25%' }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.9 }}
-                            viewport={{ once: true }}
-                            className="flex justify-between relative"
-                        >
-                            {buttons.map((button) => (
-                                <Link
-                                    className="text-sm md:mr-4 font-medium ml-4 md:ml-0 px-8 py-3 rounded-md bg-[#576CBC]/90 text-white/80 last:bg-black/80 dark:last:bg-white/80 dark:text-black hover:bg-[#576CBC] dark:hover:bg-[#576CBC]/70 transition-all duration-300 last:hover:bg-black last:dark:hover:bg-white/60"
-                                    key={button.target}
-                                    href={button.target}
-                                    scroll={false}
-                                >
-                                    {button.title}
-                                </Link>
-                            ))}
-                        </motion.div>
-                    </div>
-                    <motion.div
-                        initial={{ opacity: 0, rotateY: 180 }}
-                        whileInView={{ rotateY: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 1.2 }}
-                        viewport={{ once: true }}
-                        className={`${styles.animatedImg} !border-[4px] dark:border-white/90 border-black  w-auto h-auto lg:w-[750px] md:h-[450px] relative overflow-hidden my-16 lg:my-0 `}
-                    >
-                        <Image
-                            src="/ondrej_vseticka.jpg"
-                            className="h-full  w-full object-cover"
-                            alt="Ondrej Vseticka, fullstack developer with design sense."
-                            width={700}
-                            height={700}
-                        />
-                    </motion.div>
-                </motion.div>
-            </div>
-        </>
-    );
+function HeroContent({ isDark }: { isDark: boolean }) {
+  const t = useTranslations("hero");
+
+  return (
+    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-28 pt-32 text-center text-white">
+      {!isDark ? (
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.55)_0%,rgba(15,23,42,0.22)_48%,transparent_72%)]"
+          aria-hidden
+        />
+      ) : null}
+
+      <div className="relative">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-4 text-sm uppercase tracking-[0.25em] text-white/80"
+        >
+          {t("eyebrow")}
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)] md:text-6xl lg:text-7xl"
+        >
+          {t("title")}
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 drop-shadow-[0_1px_16px_rgba(0,0,0,0.3)] md:text-xl"
+        >
+          {t("subtitle")}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        >
+          <Button asChild variant={isDark ? "primary" : "skyPrimary"}>
+            <a href="#projekty">{t("ctaWork")}</a>
+          </Button>
+          <Button asChild variant={isDark ? "heroOutline" : "skyOutline"}>
+            <a href="#kontakt">{t("ctaContact")}</a>
+          </Button>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="mt-5 text-sm text-white/75"
+        >
+          {t("hint")}
+        </motion.p>
+      </div>
+    </div>
+  );
+}
+
+export function Hero() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  return (
+    <section id="o-mne" className="relative min-h-screen overflow-hidden">
+      <div className="absolute inset-0">
+        <div
+          className={cn(
+            "absolute inset-0 transition-opacity duration-700",
+            isDark ? "pointer-events-none opacity-0" : "opacity-100",
+          )}
+        >
+          <CloudShader className="h-full min-h-screen w-full" speed={0.85} count={6} />
+        </div>
+        <div
+          className={cn(
+            "absolute inset-0 transition-opacity duration-700",
+            isDark ? "opacity-100" : "pointer-events-none opacity-0",
+          )}
+        >
+          <SpaceShader className="h-full min-h-screen w-full" speed={0.9} />
+        </div>
+      </div>
+
+      <HeroContent isDark={isDark} />
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-24 bg-gradient-to-t from-background to-transparent" />
+
+      <motion.a
+        href="#zkusenosti"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 text-white/60 transition hover:text-white"
+        aria-label="Scroll down"
+      >
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <ChevronDown className="h-5 w-5" />
+        </motion.span>
+      </motion.a>
+    </section>
+  );
 }
