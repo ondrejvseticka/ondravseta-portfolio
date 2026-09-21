@@ -12,22 +12,23 @@ const locales: { code: Locale; label: string }[] = [
 ];
 
 type LocaleSwitcherProps = {
-  inverted?: boolean;
+  variant?: "default" | "nav";
 };
 
-export function LocaleSwitcher({ inverted = false }: LocaleSwitcherProps) {
+export function LocaleSwitcher({ variant = "default" }: LocaleSwitcherProps) {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
+  const isNav = variant === "nav";
 
   return (
     <div
       className={cn(
         "flex items-center gap-0.5 rounded-full p-0.5",
-        inverted
-          ? "border border-white/15 bg-white/5"
-          : "border border-zinc-200/80 bg-white/80 dark:border-white/15 dark:bg-white/5",
+        !isNav && "border border-border bg-surface/80",
       )}
+      role="group"
+      aria-label="Language"
     >
       {locales.map((item) => (
         <button
@@ -35,14 +36,10 @@ export function LocaleSwitcher({ inverted = false }: LocaleSwitcherProps) {
           type="button"
           onClick={() => router.replace(pathname, { locale: item.code })}
           className={cn(
-            "rounded-full px-2.5 py-1 text-[11px] font-medium transition",
+            "rounded-lg px-2.5 py-1.5 text-[11px] font-semibold transition",
             locale === item.code
-              ? inverted
-                ? "bg-indigo-500 text-white shadow-sm"
-                : "bg-indigo-600 text-white shadow-sm"
-              : inverted
-                ? "text-white/55 hover:text-white"
-                : "text-zinc-500 hover:text-zinc-900 dark:text-white/55 dark:hover:text-white",
+              ? "bg-accent text-white dark:text-stone-900"
+              : "text-muted hover:text-foreground",
           )}
           aria-current={locale === item.code ? "true" : undefined}
         >

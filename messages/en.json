@@ -1,89 +1,180 @@
 {
   "meta": {
-    "title": "Ondřej Všetička — Software Developer",
-    "description": "Software Developer focused on high-performance React/Next.js applications and interactive 3D web experiences."
+    "title": "Ondřej Všetička — Frontend & Product Engineering",
+    "description": "Building websites and apps with a focus on design, performance, and interactive 3D. Portfolio for clients and teams."
   },
   "nav": {
     "about": "About",
-    "experience": "Experience",
-    "projects": "Projects",
+    "work": "Work",
+    "capabilities": "Capabilities",
+    "process": "Process",
+    "profile": "Profile",
     "contact": "Contact",
+    "cta": "Get in touch",
+    "brandSubtitle": "Frontend & product",
     "mainNav": "Main navigation",
     "mobileNav": "Mobile navigation",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
   "hero": {
-    "eyebrow": "Software Developer",
-    "title": "Pushing the limits of what the web browser can do.",
-    "subtitle": "I'm Ondřej Všetička. I build high-performance applications with React and Next.js — from precise UI to interactive 3D, directly in the browser.",
-    "ctaWork": "Explore my work",
-    "ctaContact": "Start a collaboration",
-    "hint": "React · Next.js · TypeScript · Babylon.js"
+    "eyebrow": "Frontend & product engineering",
+    "titleBefore": "I build websites and apps that",
+    "titleAccent": "look intentional",
+    "titleAfter": "and don't stop at the mockup.",
+    "subtitle": "I'm Ondřej Všetička. I combine precise UI, Next.js architecture, and interactive 3D — from client websites to product experiments.",
+    "ctaWork": "Selected work",
+    "ctaProfile": "My profile",
+    "hint": "React · Next.js · TypeScript · Babylon.js · tRPC"
   },
-  "bento": {
-    "eyebrow": "Experience",
-    "title": "Technologies that move products forward",
-    "frontendTitle": "Pixel-perfect UI & performance",
-    "frontendDescription": "I build with TypeScript, React, and Next.js — interfaces that stay fast and maintainable even at massive scale.",
-    "threeDTitle": "3D on the web, no compromises",
-    "threeDDescription": "With Babylon.JS I bring complex 3D models, spatial calculations, and configurators directly into the user's browser.",
-    "fullstackTitle": "Full-stack reach",
-    "fullstackDescription": "Frontend doesn't work without a solid foundation. I design APIs and data flows with Node.js, NestJS, and GraphQL, and integrate modern headless CMS like Sanity."
+  "stack": {
+    "label": "Stack",
+    "title": "Technologies & tools",
+    "subtitle": "The areas I ship production sites and lab projects in — not a partner logo strip.",
+    "groups": {
+      "frontend": {
+        "title": "Frontend & UI",
+        "items": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
+      },
+      "threeD": {
+        "title": "3D & motion",
+        "items": ["Babylon.js", "WebGL", "GSAP", "ScrollTrigger", "GLSL"]
+      },
+      "backend": {
+        "title": "Backend & data",
+        "items": ["Node.js", "tRPC", "GraphQL", "Redis", "Sanity"]
+      }
+    }
   },
-  "projects": {
-    "eyebrow": "Projects",
-    "title": "Selected work",
-    "subtitle": "Websites and applications I've designed and built — from content platforms to custom client sites.",
+  "work": {
+    "label": "Work",
+    "title": "Selected projects",
+    "subtitle": "Client websites and lab products — from a law firm site to a 3D keyboard configurator.",
+    "filterAll": "All",
+    "filterClient": "Clients",
+    "filterLab": "Lab",
     "visitSite": "Visit site",
-    "paletteLabel": "Site color palette",
-    "paletteRoles": ["Primary", "Secondary", "Background"],
+    "viewRepo": "GitHub",
+    "kindClient": "Client",
+    "kindLab": "Lab",
+    "scrollHint": "Scroll sideways — swipe or trackpad",
     "items": {
       "abivia": {
         "title": "abivia.cz",
-        "client": "Law firm — debt relief and insolvency",
-        "description": "Large-scale site for an insolvency law firm — debt relief calculator, advisor map, testimonials, blog, and conversion-focused landing pages.",
-        "services": ["Web design", "Development", "CMS", "Landing pages"]
+        "client": "Law firm",
+        "description": "Full website for debt relief and insolvency — calculator, advisor map, references, and conversion landing pages.",
+        "highlights": ["Web design", "Next.js", "CMS"]
+      },
+      "prinsights": {
+        "title": "PR Insights",
+        "client": "PR consultant",
+        "description": "Presentation site for turnkey PR campaigns — services, references, packages, and meeting booking.",
+        "highlights": ["Web design", "Service showcase", "Responsive web"]
       },
       "podpustevnami": {
         "title": "Kemp pod Pustevnami",
-        "client": "Campground in the Beskydy — Prostřední Bečva",
-        "description": "Campground website in the Beskydy mountains — accommodation, pricing, photo gallery, local trip tips, and online cabin booking.",
-        "services": ["Web design", "Development", "Booking", "SEO"]
+        "client": "Campground in Beskydy",
+        "description": "Campground presentation with accommodation, pricing, gallery, and online cabin booking.",
+        "highlights": ["Responsive web", "Booking", "SEO"]
       },
       "zvonice": {
-        "title": "zvonice.eu",
-        "client": "Presentation website",
-        "description": "Website for the Zvonice project — clean presentation, responsive layout, and readability across devices.",
-        "services": ["Web design", "Development", "Responsive UI"]
+        "title": "Zvonice Soláň",
+        "client": "Visitor center",
+        "description": "Presentation site for the Zvonice Soláň visitor center — events, news, gallery, and opening hours.",
+        "highlights": ["Design", "Development", "Responsive"]
+      },
+      "keeb": {
+        "title": "Keeb Studio",
+        "client": "Lab — 3D configurator",
+        "description": "Interactive 3D shop for custom keycap legends — Babylon.js, PBR materials, RGB modes, and cart.",
+        "highlights": ["Babylon.js 9", "On-demand render", "Legend atlas"]
+      },
+      "prsi": {
+        "title": "Prší / Mau-Mau",
+        "client": "Lab — multiplayer game",
+        "description": "Real-time Extreme Mau-Mau with tRPC, Redis locks, Pusher notifications, and a tested rules engine.",
+        "highlights": ["tRPC", "Redis + Pusher", "Vitest engine"]
       }
     }
   },
-  "services": {
-    "eyebrow": "Services",
-    "title": "What I can build for you",
+  "capabilities": {
+    "label": "Capabilities",
+    "title": "What I bring to a project",
+    "subtitle": "From pixel detail to architecture that scales with the product.",
+    "tabs": {
+      "frontend": "Frontend",
+      "threeD": "3D & WebGL",
+      "fullstack": "Full-stack"
+    },
     "items": {
-      "webApps": {
-        "title": "Custom Web Applications",
-        "description": "From database architecture to responsive frontend — tools that solve real business problems."
+      "frontend": {
+        "title": "Frontend & product UI",
+        "description": "TypeScript, React, and Next.js — components, design systems, motion, and performance. Interfaces that feel intentional, not templated.",
+        "tags": ["React", "Next.js", "Tailwind", "Motion"]
       },
       "threeD": {
-        "title": "Interactive 3D & Configurators",
-        "description": "Stand out from the competition with 3D graphics running directly in the browser."
+        "title": "Interactive 3D on the web",
+        "description": "Babylon.js configurators, WebGL visuals, and in-browser product previews — no plugins, no compromises.",
+        "tags": ["Babylon.js", "WebGL", "PBR", "Zustand"]
       },
-      "optimization": {
-        "title": "Revitalization & Optimization",
-        "description": "Code refactoring, faster load times, and smooth integration with modern APIs."
+      "fullstack": {
+        "title": "Full-stack & real-time",
+        "description": "API layer, data flows, headless CMS, and real-time sync. NestJS, tRPC, GraphQL, Redis — frontend needs a solid backend.",
+        "tags": ["Node.js", "tRPC", "Redis", "Sanity"]
       }
     }
   },
+  "process": {
+    "label": "Process",
+    "title": "How collaboration works",
+    "subtitle": "A transparent path from first call to launch — no surprises on timeline or scope.",
+    "steps": {
+      "discover": {
+        "title": "Discovery",
+        "description": "We align on goals, audience, and what the site or app actually needs to solve. No unnecessary scope creep."
+      },
+      "design": {
+        "title": "Design & architecture",
+        "description": "Wireframes, visual direction, and a technical plan. UI designed to maintain and extend."
+      },
+      "build": {
+        "title": "Build & iteration",
+        "description": "Regular demos, feedback loops, and performance focus from the first sprint."
+      },
+      "launch": {
+        "title": "Launch & handoff",
+        "description": "Deployment, documentation, and handover. Available for the next product phase."
+      }
+    }
+  },
+  "profile": {
+    "label": "Profile",
+    "title": "Profile & experience",
+    "subtitle": "I'm looking for projects where I can combine frontend craft, product thinking, and technical depth.",
+    "focusTitle": "Focus",
+    "focusHeadline": "Senior frontend & product",
+    "focusItems": [
+      "Next.js apps with demanding UI, motion, or 3D",
+      "Product teams that care about code quality and detail",
+      "Projects from design through launch — not just ticket churn"
+    ],
+    "stackTitle": "Core stack",
+    "stackHighlight": ["TypeScript", "React", "Next.js", "Babylon.js", "Node.js", "tRPC"],
+    "lookingTitle": "What I'm looking for",
+    "lookingHeadline": "Team & project",
+    "lookingItems": [
+      "Remote or hybrid in CZ / EU",
+      "Products with visual ambition — not just CRUD admin",
+      "Design and engineering in one team, not silos"
+    ],
+    "availability": "Open to new projects and full-time opportunities — get in touch and we'll see if it's a fit."
+  },
   "footer": {
-    "title": "Have a project that needs a modern approach?",
-    "subtitle": "Whether it's a complex web application or 3D integration, let's talk.",
-    "cta": "Send an email",
+    "title": "Have a project you want to move forward?",
+    "subtitle": "Drop me a line — whether it's a website, app, or 3D configurator. Happy to discuss scope and technical direction.",
+    "cta": "Send email",
     "copyright": "Ondřej Všetička",
-    "portraitAlt": "Ondřej Všetička — software developer",
-    "tagline": "Software developer focused on high-performance React/Next.js applications and interactive 3D on the web.",
+    "tagline": "Frontend & product engineering — React, Next.js, 3D on the web.",
     "stack": "React · Next.js · TypeScript · Babylon.js",
     "navigation": "Navigation",
     "connect": "Connect",

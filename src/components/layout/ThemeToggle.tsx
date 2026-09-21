@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type ThemeToggleProps = {
-  inverted?: boolean;
+  variant?: "default" | "nav";
 };
 
-export function ThemeToggle({ inverted = false }: ThemeToggleProps) {
+export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -20,8 +20,8 @@ export function ThemeToggle({ inverted = false }: ThemeToggleProps) {
     return (
       <div
         className={cn(
-          "h-8 w-8 rounded-full",
-          inverted ? "bg-white/10" : "bg-zinc-100 dark:bg-white/10",
+          "size-8 rounded-lg",
+          variant === "nav" ? "bg-transparent" : "bg-stone-100 dark:bg-white/10",
         )}
       />
     );
@@ -34,14 +34,12 @@ export function ThemeToggle({ inverted = false }: ThemeToggleProps) {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "flex h-8 w-8 items-center justify-center rounded-full transition",
-        inverted
-          ? "border border-white/15 text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white"
-          : "border border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 dark:border-white/15 dark:text-white/70 dark:hover:border-white/30 dark:hover:bg-white/10 dark:hover:text-white",
+        "flex size-8 items-center justify-center rounded-lg text-muted transition hover:bg-stone-200/60 hover:text-foreground dark:hover:bg-white/[0.08] dark:hover:text-foreground",
+        variant === "default" && "border border-border",
       )}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+      {isDark ? <Sun className="size-3.5" /> : <Moon className="size-3.5" />}
     </button>
   );
 }

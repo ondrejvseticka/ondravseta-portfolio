@@ -3,46 +3,50 @@
 import { motion } from "framer-motion";
 import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
+import { AuroraBackground } from "@/components/ui/AuroraBackground";
+import type { Locale } from "@/i18n/routing";
+import { sectionHref, type SectionKey } from "@/lib/sections";
 
 const socials = [
-  {
-    href: "https://linkedin.com/in/ondravseta",
-    label: "LinkedIn",
-    icon: Linkedin,
-  },
-  {
-    href: "https://github.com/ondravseta",
-    label: "GitHub",
-    icon: Github,
-  },
+  { href: "https://www.linkedin.com/in/ond%C5%99ej-v%C5%A1eti%C4%8Dka-7376a0271/", label: "LinkedIn", icon: Linkedin },
+  { href: "https://github.com/ondrejvseticka", label: "GitHub", icon: Github },
 ];
 
-const navLinks = [
-  { href: "#o-mne", key: "about" as const },
-  { href: "#zkusenosti", key: "experience" as const },
-  { href: "#projekty", key: "projects" as const },
-  { href: "#kontakt", key: "contact" as const },
+const navKeys: SectionKey[] = [
+  "about",
+  "work",
+  "capabilities",
+  "process",
+  "profile",
+  "contact",
 ];
 
 export function Footer() {
   const t = useTranslations("footer");
   const tNav = useTranslations("nav");
+  const locale = useLocale() as Locale;
+
+  const navLinks = navKeys.map((key) => ({
+    href: sectionHref(locale, key),
+    label: tNav(key),
+  }));
 
   return (
-    <footer className="section-padding pb-10 pt-8">
+    <footer className="content-shell pb-10 pt-8">
       <motion.section
-        id="kontakt"
-        initial={{ opacity: 0, y: 40 }}
+        id={sectionHref(locale, "contact").slice(1)}
+        initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.7 }}
-        className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-zinc-200/80 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900 dark:shadow-none"
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65 }}
+        className="surface-card relative overflow-hidden"
       >
-        <div className="grid md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <div className="relative aspect-[4/5] min-h-[280px] md:aspect-auto md:min-h-[420px]">
+        <AuroraBackground />
+        <div className="relative grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div className="relative aspect-[5/8] min-h-[354px] border-b border-border md:aspect-auto md:min-h-[455px] md:border-b-0 md:border-r">
             <Image
               src="/ondrej-vseticka.jpg"
               alt={t("portraitAlt")}
@@ -52,19 +56,18 @@ export function Footer() {
               priority={false}
             />
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent dark:from-zinc-950/40 md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-white/10 dark:md:to-zinc-900"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-background/40"
               aria-hidden
             />
           </div>
-
-          <div className="flex flex-col justify-center bg-white p-8 text-center dark:bg-zinc-900 md:p-12 md:text-left">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
+          <div className="flex flex-col justify-center p-8 md:p-10">
+            <h2 className="font-display text-3xl tracking-tight text-foreground md:text-4xl">
               {t("title")}
             </h2>
-            <p className="mt-4 max-w-xl text-base text-zinc-600 dark:text-white/60 md:text-lg">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
               {t("subtitle")}
             </p>
-            <div className="mt-8 flex justify-center md:justify-start">
+            <div className="mt-8">
               <Button asChild variant="primary">
                 <a href="mailto:ondravseta@email.cz">{t("cta")}</a>
               </Button>
@@ -74,43 +77,33 @@ export function Footer() {
       </motion.section>
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="mx-auto mt-12 max-w-5xl border-t border-zinc-200/80 pt-10 dark:border-white/10"
+        viewport={{ once: true }}
+        transition={{ duration: 0.55, delay: 0.08 }}
+        className="mt-12 border-t border-border pt-10"
       >
-        <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)_minmax(0,0.8fr)] md:gap-8">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)_minmax(0,0.8fr)]">
           <div>
             <a
-              href="#o-mne"
-              className="inline-flex items-center gap-2 text-lg font-semibold tracking-wide text-zinc-900 dark:text-white"
+              href={sectionHref(locale, "about")}
+              className="inline-flex items-center gap-2 font-display text-lg text-foreground"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-indigo-200 bg-indigo-50 text-sm dark:border-indigo-400/20 dark:bg-indigo-500/10">
-                OV
-              </span>
-              {t("copyright")}
+              Ondřej Všetička
             </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-600 dark:text-white/55">
-              {t("tagline")}
-            </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.18em] text-zinc-400 dark:text-white/35">
-              {t("stack")}
-            </p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">{t("tagline")}</p>
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-white/35">
-              {t("navigation")}
-            </p>
-            <ul className="mt-4 space-y-3">
+            <p className="text-xs font-medium text-muted">{t("navigation")}</p>
+            <ul className="mt-4 space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-white/60 dark:hover:text-white"
+                    className="text-sm text-muted transition hover:text-foreground"
                   >
-                    {tNav(link.key)}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -118,16 +111,14 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-white/35">
-              {t("connect")}
-            </p>
-            <ul className="mt-4 space-y-3">
+            <p className="text-xs font-medium text-muted">{t("connect")}</p>
+            <ul className="mt-4 space-y-2.5">
               <li>
                 <a
                   href="mailto:ondravseta@email.cz"
-                  className="group inline-flex items-center gap-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-white/60 dark:hover:text-white"
+                  className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-foreground"
                 >
-                  <Mail className="h-4 w-4 transition group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />
+                  <Mail className="size-4" />
                   ondravseta@email.cz
                 </a>
               </li>
@@ -137,9 +128,9 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-white/60 dark:hover:text-white"
+                    className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-foreground"
                   >
-                    <social.icon className="h-4 w-4 transition group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />
+                    <social.icon className="size-4" />
                     {social.label}
                   </a>
                 </li>
@@ -148,16 +139,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-zinc-200/80 pt-6 dark:border-white/10 sm:flex-row sm:items-center">
-          <p className="text-xs text-zinc-400 dark:text-white/30">
+        <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted">
             © {new Date().getFullYear()} {t("copyright")}. {t("rights")}
           </p>
           <a
-            href="#o-mne"
-            className="group inline-flex items-center gap-2 text-xs text-zinc-500 transition hover:text-zinc-900 dark:text-white/45 dark:hover:text-white"
+            href={sectionHref(locale, "about")}
+            className="inline-flex items-center gap-2 text-xs text-muted transition hover:text-foreground"
           >
             {t("backToTop")}
-            <ArrowUp className="h-3.5 w-3.5 transition group-hover:-translate-y-0.5" />
+            <ArrowUp className="size-3.5" />
           </a>
         </div>
       </motion.div>

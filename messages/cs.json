@@ -1,89 +1,180 @@
 {
   "meta": {
-    "title": "Ondřej Všetička — Software Developer",
-    "description": "Software Developer se zaměřením na vysoce výkonné React/Next.js aplikace a interaktivní 3D webové zážitky."
+    "title": "Ondřej Všetička — Frontend & produktový vývoj",
+    "description": "Stavím weby a aplikace s důrazem na design, výkon a interaktivní 3D. Portfolio pro klienty i týmy."
   },
   "nav": {
     "about": "O mně",
-    "experience": "Zkušenosti",
-    "projects": "Projekty",
+    "work": "Práce",
+    "capabilities": "Schopnosti",
+    "process": "Spolupráce",
+    "profile": "Profil",
     "contact": "Kontakt",
+    "cta": "Napsat e-mail",
+    "brandSubtitle": "Frontend & produkt",
     "mainNav": "Hlavní navigace",
     "mobileNav": "Mobilní navigace",
     "openMenu": "Otevřít menu",
     "closeMenu": "Zavřít menu"
   },
   "hero": {
-    "eyebrow": "Software Developer",
-    "title": "Posouvám hranice toho, co dokáže webový prohlížeč.",
-    "subtitle": "Jsem Ondřej Všetička. Stavím vysoce výkonné aplikace v Reactu a Next.js — od precizního UI až po interaktivní 3D přímo v prohlížeči.",
-    "ctaWork": "Prozkoumat práci",
-    "ctaContact": "Navázat spolupráci",
-    "hint": "React · Next.js · TypeScript · Babylon.js"
+    "eyebrow": "Frontend & produktový vývoj",
+    "titleBefore": "Stavím weby a aplikace, které",
+    "titleAccent": "vypadají promyšleně",
+    "titleAfter": "a nezůstanou u mockupu.",
+    "subtitle": "Jsem Ondřej Všetička. Kombinuji precizní UI, Next.js architekturu a interaktivní 3D — od klientských webů po produktové experimenty.",
+    "ctaWork": "Vybraná práce",
+    "ctaProfile": "Můj profil",
+    "hint": "React · Next.js · TypeScript · Babylon.js · tRPC"
   },
-  "bento": {
-    "eyebrow": "Zkušenosti",
-    "title": "Technologie, které posouvají produkty vpřed",
-    "frontendTitle": "Pixel-perfect UI & výkon",
-    "frontendDescription": "Stavím na TypeScriptu, Reactu a Next.js. Tvořím rozhraní, která jsou bleskově rychlá a udržitelná i při obrovském škálování.",
-    "threeDTitle": "3D na webu bez kompromisů",
-    "threeDDescription": "Pomocí Babylon.JS přenáším složité 3D modely, prostorové výpočty a konfigurátory přímo do prohlížeče uživatele.",
-    "fullstackTitle": "Full-stack přesah",
-    "fullstackDescription": "Frontend bez silného základu nefunguje. Navrhuji API a datové toky pomocí Node.js, NestJS a GraphQL. Integruji moderní headless CMS jako Sanity."
+  "stack": {
+    "label": "Stack",
+    "title": "Technologie & nástroje",
+    "subtitle": "Skupiny, ve kterých stavím produkční weby a lab projekty — ne logo wall partnerů.",
+    "groups": {
+      "frontend": {
+        "title": "Frontend & UI",
+        "items": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
+      },
+      "threeD": {
+        "title": "3D & motion",
+        "items": ["Babylon.js", "WebGL", "GSAP", "ScrollTrigger", "GLSL"]
+      },
+      "backend": {
+        "title": "Backend & data",
+        "items": ["Node.js", "tRPC", "GraphQL", "Redis", "Sanity"]
+      }
+    }
   },
-  "projects": {
-    "eyebrow": "Projekty",
-    "title": "Vybraná práce",
-    "subtitle": "Weby a aplikace, které jsem navrhoval a vyvíjel — od obsahových platforem po klientské weby na míru.",
+  "work": {
+    "label": "Práce",
+    "title": "Vybrané projekty",
+    "subtitle": "Klientské weby i lab produkty — od advokátní kanceláře po 3D konfigurátor klávesnice.",
+    "filterAll": "Vše",
+    "filterClient": "Klienti",
+    "filterLab": "Lab",
     "visitSite": "Navštívit web",
-    "paletteLabel": "Barevná paleta webu",
-    "paletteRoles": ["Hlavní", "Doplňková", "Pozadí"],
+    "viewRepo": "GitHub",
+    "kindClient": "Klient",
+    "kindLab": "Lab",
+    "scrollHint": "Posuň do strany — swipe nebo scroll",
     "items": {
       "abivia": {
         "title": "abivia.cz",
-        "client": "Advokátní kancelář — oddlužení a insolvence",
-        "description": "Rozsáhlý web advokátní kanceláře pro oddlužení a insolvenci — kalkulačka, mapa poradců, reference, blog a konverzní landingy.",
-        "services": ["Web design", "Vývoj", "CMS", "Landingy"]
+        "client": "Advokátní kancelář",
+        "description": "Rozsáhlý web pro oddlužení a insolvenci — kalkulačka, mapa poradců, reference a konverzní landingy.",
+        "highlights": ["Web design", "Next.js", "CMS"]
+      },
+      "prinsights": {
+        "title": "PR Insights",
+        "client": "PR konzultantka",
+        "description": "Prezentační web pro PR kampaně na klíč — služby, reference, balíčky a rezervace schůzky.",
+        "highlights": ["Web design", "Prezentace služeb", "Responzivní web"]
       },
       "podpustevnami": {
         "title": "Kemp pod Pustevnami",
-        "client": "Kemp v Beskydech — Prostřední Bečva",
-        "description": "Prezentace kempu v Beskydech — ubytování, ceník, fotogalerie, tipy na výlety a online rezervace chat.",
-        "services": ["Web design", "Vývoj", "Rezervace", "SEO"]
+        "client": "Kemp v Beskydech",
+        "description": "Prezentace kempu s ubytováním, ceníkem, galerií a online rezervací chat.",
+        "highlights": ["Responzivní web", "Rezervace", "SEO"]
       },
       "zvonice": {
-        "title": "zvonice.eu",
-        "client": "Prezentační web",
-        "description": "Web pro projekt Zvonice — čistá prezentace, responzivní layout a důraz na čitelnost napříč zařízeními.",
-        "services": ["Web design", "Vývoj", "Responze"]
+        "title": "Zvonice Soláň",
+        "client": "Informační centrum",
+        "description": "Prezentační web informačního centra Zvonice Soláň — akce, aktuality, galerie a otevírací doba.",
+        "highlights": ["Design", "Vývoj", "Responze"]
+      },
+      "keeb": {
+        "title": "Keeb Studio",
+        "client": "Lab — 3D konfigurátor",
+        "description": "Interaktivní 3D shop pro custom keycap legendy — Babylon.js, PBR materiály, RGB režimy a košík.",
+        "highlights": ["Babylon.js 9", "On-demand render", "Legend atlas"]
+      },
+      "prsi": {
+        "title": "Prší / Mau-Mau",
+        "client": "Lab — multiplayer hra",
+        "description": "Real-time Extreme Mau-Mau s tRPC, Redis locky, Pusher notifikacemi a testovaným rules enginem.",
+        "highlights": ["tRPC", "Redis + Pusher", "Vitest engine"]
       }
     }
   },
-  "services": {
-    "eyebrow": "Služby",
-    "title": "Co pro vás mohu postavit",
+  "capabilities": {
+    "label": "Schopnosti",
+    "title": "Co umím přinést do projektu",
+    "subtitle": "Od pixelového detailu po architekturu, která vydrží růst produktu.",
+    "tabs": {
+      "frontend": "Frontend",
+      "threeD": "3D & WebGL",
+      "fullstack": "Full-stack"
+    },
     "items": {
-      "webApps": {
-        "title": "Custom Webové Aplikace",
-        "description": "Od architektury databází až po responzivní frontend. Stavím nástroje, které řeší reálné byznys problémy."
+      "frontend": {
+        "title": "Frontend & produktové UI",
+        "description": "TypeScript, React a Next.js — komponenty, design systém, animace a výkon. Rozhraní, které působí promyšleně, ne jako šablona.",
+        "tags": ["React", "Next.js", "Tailwind", "Motion"]
       },
       "threeD": {
-        "title": "Interaktivní 3D & Konfigurátory",
-        "description": "Odlíšení od konkurence pomocí 3D grafiky přímo v prohlížeči."
+        "title": "Interaktivní 3D na webu",
+        "description": "Babylon.js konfigurátory, WebGL vizualizace a produktové preview přímo v prohlížeči — bez pluginů a kompromisů.",
+        "tags": ["Babylon.js", "WebGL", "PBR", "Zustand"]
       },
-      "optimization": {
-        "title": "Revitalizace a Optimalizace",
-        "description": "Refaktoring kódu, zrychlení načítání a hladké napojení na moderní API."
+      "fullstack": {
+        "title": "Full-stack & real-time",
+        "description": "API vrstva, datové toky, headless CMS a real-time sync. NestJS, tRPC, GraphQL, Redis — frontend bez silného backendu nefunguje.",
+        "tags": ["Node.js", "tRPC", "Redis", "Sanity"]
       }
     }
   },
+  "process": {
+    "label": "Spolupráce",
+    "title": "Jak spolupráce probíhá",
+    "subtitle": "Transparentní proces od prvního hovoru po launch — bez překvapení v termínech ani scope.",
+    "steps": {
+      "discover": {
+        "title": "Discovery",
+        "description": "Probereme cíle, audience a co má web nebo appka reálně řešit. Bez zbytečného scope creep."
+      },
+      "design": {
+        "title": "Design & architektura",
+        "description": "Wireframe, vizuální směr a technický plán. UI navrhnu tak, aby šlo udržet a rozšiřovat."
+      },
+      "build": {
+        "title": "Vývoj & iterace",
+        "description": "Průběžné ukázky, feedback smyčka a důraz na výkon od prvního sprintu."
+      },
+      "launch": {
+        "title": "Launch & handoff",
+        "description": "Nasazení, dokumentace a předání. Zůstávám k dispozici pro další fáze produktu."
+      }
+    }
+  },
+  "profile": {
+    "label": "Profil",
+    "title": "Profil & zkušenosti",
+    "subtitle": "Hledám projekty, kde můžu spojit frontend craft, produktové myšlení a technickou hloubku.",
+    "focusTitle": "Zaměření",
+    "focusHeadline": "Senior frontend & produkt",
+    "focusItems": [
+      "Next.js aplikace s náročným UI, motion nebo 3D",
+      "Produktové týmy, kde záleží na kvalitě kódu i detailu",
+      "Projekty od návrhu po launch — ne jen „překlápění ticketů“"
+    ],
+    "stackTitle": "Hlavní stack",
+    "stackHighlight": ["TypeScript", "React", "Next.js", "Babylon.js", "Node.js", "tRPC"],
+    "lookingTitle": "Co hledám",
+    "lookingHeadline": "Tým & projekt",
+    "lookingItems": [
+      "Remote nebo hybrid v ČR / EU",
+      "Produkty s vizuální ambicí — ne jen CRUD admin",
+      "Design a engineering v jednom týmu, ne v silotech"
+    ],
+    "availability": "Otevřený novým projektům i full-time příležitostem — napište a probereme fit."
+  },
   "footer": {
-    "title": "Máte projekt, který vyžaduje moderní přístup?",
-    "subtitle": "Ať už jde o složitou webovou aplikaci nebo integraci 3D prvků, pojďme to probrat.",
+    "title": "Máte projekt, který chcete posunout?",
+    "subtitle": "Napište mi — ať už jde o web, aplikaci nebo 3D konfigurátor. Rád proberu scope i technický směr.",
     "cta": "Napsat e-mail",
     "copyright": "Ondřej Všetička",
-    "portraitAlt": "Ondřej Všetička — software developer",
-    "tagline": "Software developer se zaměřením na výkonné React/Next.js aplikace a interaktivní 3D na webu.",
+    "tagline": "Frontend & produktový vývoj — React, Next.js, 3D na webu.",
     "stack": "React · Next.js · TypeScript · Babylon.js",
     "navigation": "Navigace",
     "connect": "Kontakt",

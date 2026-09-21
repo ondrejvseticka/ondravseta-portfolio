@@ -1,16 +1,20 @@
+import { Capabilities } from "@/components/capabilities/Capabilities";
 import { Footer } from "@/components/layout/Footer";
+import { TechStack } from "@/components/stack/TechStack";
 import { Hero } from "@/components/hero/Hero";
-import { BentoGrid } from "@/components/skills/BentoGrid";
-import { Services } from "@/components/services/Services";
-import { Projects } from "@/components/work/Projects";
+import { Process } from "@/components/process/Process";
+import { Profile } from "@/components/profile/Profile";
+import { WorkCarousel } from "@/components/work/WorkCarousel";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <BentoGrid />
-      <Projects />
-      <Services />
+      <TechStack />
+      <WorkCarousel />
+      <Capabilities />
+      <Process />
+      <Profile />
       <Footer />
     </>
   );

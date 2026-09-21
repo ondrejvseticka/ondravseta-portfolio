@@ -3,15 +3,21 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { Instrument_Serif } from "next/font/google";
 import { notFound } from "next/navigation";
 
-import { CustomCursor } from "@/components/layout/CustomCursor";
 import { Navbar } from "@/components/layout/Navbar";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { routing, type Locale } from "@/i18n/routing";
 
 import "../globals.css";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  variable: "--font-display",
+});
 
 type Props = {
   children: React.ReactNode;
@@ -49,14 +55,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <SmoothScroll>
-              <CustomCursor />
               <Navbar />
               <main>{children}</main>
             </SmoothScroll>

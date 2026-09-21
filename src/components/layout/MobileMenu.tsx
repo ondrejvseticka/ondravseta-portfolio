@@ -1,12 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type CSSProperties, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { Button } from "@/components/ui/Button";
 
 type MobileMenuProps = {
   open: boolean;
@@ -34,7 +36,7 @@ export function MobileMenu(props: MobileMenuProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.35 }}
+          transition={{ duration: 0.3 }}
           className="fixed inset-0 z-[120] flex touch-none flex-col overscroll-none lg:hidden"
         >
           <motion.button
@@ -43,58 +45,52 @@ export function MobileMenu(props: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 touch-none bg-zinc-50/95 backdrop-blur-md dark:bg-zinc-950/95"
+            className="absolute inset-0 touch-none bg-background/90 backdrop-blur-md"
             onClick={props.onClose}
           />
 
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 28 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             data-lenis-prevent
-            className="relative flex min-h-0 flex-1 flex-col justify-between overflow-y-auto overscroll-contain shell-x pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] touch-pan-y"
-            style={{ paddingTop: `calc(${props.headerOffsetPx}px + env(safe-area-inset-top, 0px))` }}
+            className="relative mx-4 flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain rounded-2xl border border-border bg-surface shadow-[0_24px_64px_-24px_rgba(28,25,23,0.25)] touch-pan-y md:mx-6"
+            style={{
+              marginTop: `calc(${props.headerOffsetPx}px + 0.5rem + env(safe-area-inset-top, 0px))`,
+              marginBottom: "calc(1rem + env(safe-area-inset-bottom, 0px))",
+            }}
           >
-            <div className="shell-x-inner">
-              <nav className="flex flex-col" aria-label={t("mobileNav")}>
-                {props.links.map((link, index) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="menu-shell-item block border-b border-zinc-200/80 py-5 text-[clamp(1.625rem,6.5vw,2.25rem)] font-medium leading-[1.1] tracking-[-0.02em] text-zinc-900 transition-colors duration-250 hover:text-indigo-600 dark:border-white/10 dark:text-white dark:hover:text-indigo-300"
-                    style={{ "--menu-i": index } as CSSProperties}
-                    onClick={props.onClose}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-
+            <nav className="flex flex-1 flex-col p-5" aria-label={t("mobileNav")}>
+              {props.links.map((link, index) => (
                 <a
-                  href="mailto:ondravseta@email.cz"
-                  className="menu-shell-item mt-6 inline-flex w-fit rounded-full border border-zinc-900 px-5 py-3 text-sm font-medium text-zinc-900 transition hover:bg-zinc-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
-                  style={{ "--menu-i": props.links.length } as CSSProperties}
+                  key={link.href}
+                  href={link.href}
+                  className="menu-shell-item block border-b border-border py-4 font-display text-[clamp(1.5rem,5.5vw,2rem)] leading-tight tracking-tight text-foreground transition hover:text-accent"
+                  style={{ "--menu-i": index } as CSSProperties}
                   onClick={props.onClose}
                 >
-                  {t("contact")}
+                  {link.label}
                 </a>
+              ))}
 
-                <div
-                  className="menu-shell-item mt-8 flex items-center gap-3"
-                  style={{ "--menu-i": props.links.length + 1 } as CSSProperties}
-                >
-                  <LocaleSwitcher />
-                  <ThemeToggle />
-                </div>
-              </nav>
-
-              <p
-                className="menu-shell-item--foot mt-10 text-[0.6875rem] font-normal uppercase tracking-[0.08em] text-zinc-400 dark:text-white/35"
-                style={{ "--menu-i": props.links.length + 2 } as CSSProperties}
+              <div
+                className="menu-shell-item mt-6 space-y-4"
+                style={{ "--menu-i": props.links.length } as CSSProperties}
               >
-                Ondřej Všetička · Software Developer
-              </p>
-            </div>
+                <Button asChild variant="primary" className="h-12 w-full shadow-glow">
+                  <a href="mailto:ondravseta@email.cz" className="gap-2">
+                    {t("cta")}
+                    <ArrowUpRight className="size-4" />
+                  </a>
+                </Button>
+
+                <div className="flex items-center justify-between rounded-xl border border-border bg-stone-100/50 p-1 dark:bg-white/[0.03]">
+                  <LocaleSwitcher variant="nav" />
+                  <ThemeToggle variant="nav" />
+                </div>
+              </div>
+            </nav>
           </motion.div>
         </motion.div>
       ) : null}

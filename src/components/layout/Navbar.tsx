@@ -1,34 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import { useTranslations } from "next-intl";
+import { ArrowUpRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { Button } from "@/components/ui/Button";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import type { Locale } from "@/i18n/routing";
+import { sectionHref } from "@/lib/sections";
 import { cn } from "@/lib/utils";
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
-    <span className="relative h-3.5 w-[18px]" aria-hidden>
+    <span className="relative block h-3.5 w-[18px]" aria-hidden>
       <span
         className={cn(
-          "absolute left-0 h-[1.5px] w-full rounded-[1px] bg-zinc-900 transition-[transform,top,opacity] duration-[380ms] ease-out dark:bg-white",
+          "absolute left-0 h-[1.5px] w-full rounded-full bg-foreground transition-[transform,top,opacity] duration-300 ease-out",
           open ? "top-[6.25px] rotate-45" : "top-0",
         )}
       />
       <span
         className={cn(
-          "absolute top-[6.25px] left-0 h-[1.5px] w-full rounded-[1px] bg-zinc-900 transition-[transform,opacity] duration-[380ms] ease-out dark:bg-white",
+          "absolute top-[6.25px] left-0 h-[1.5px] w-full rounded-full bg-foreground transition-[transform,opacity] duration-300 ease-out",
           open ? "scale-x-0 opacity-0" : "opacity-100",
         )}
       />
       <span
         className={cn(
-          "absolute left-0 h-[1.5px] w-full rounded-[1px] bg-zinc-900 transition-[transform,top] duration-[380ms] ease-out dark:bg-white",
+          "absolute left-0 h-[1.5px] w-full rounded-full bg-foreground transition-[transform,top] duration-300 ease-out",
           open ? "top-[6.25px] -rotate-45" : "top-[12.5px]",
         )}
       />
@@ -36,26 +39,28 @@ function HamburgerIcon({ open }: { open: boolean }) {
   );
 }
 
+const navKeys = ["work", "capabilities", "process", "profile"] as const;
+
 export function Navbar() {
   const t = useTranslations("nav");
-  const { resolvedTheme } = useTheme();
+  const locale = useLocale() as Locale;
   const headerRef = useRef<HTMLElement>(null);
-  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [overHero, setOverHero] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerOffsetPx, setHeaderOffsetPx] = useState(88);
 
   useScrollLock(menuOpen);
 
-  const links = [
-    { href: "#o-mne", label: t("about") },
-    { href: "#zkusenosti", label: t("experience") },
-    { href: "#projekty", label: t("projects") },
-    { href: "#kontakt", label: t("contact") },
-  ];
+  const links = navKeys.map((key) => ({
+    href: sectionHref(locale, key),
+    label: t(key),
+  }));
 
-  useEffect(() => setMounted(true), []);
+  const mobileLinks = [
+    { href: sectionHref(locale, "about"), label: t("about") },
+    ...links,
+    { href: sectionHref(locale, "contact"), label: t("contact") },
+  ];
 
   useEffect(() => {
     const syncHeaderOffset = () => {
@@ -64,11 +69,7 @@ export function Navbar() {
       }
     };
 
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 40);
-      setOverHero(y < window.innerHeight * 0.72);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 16);
 
     syncHeaderOffset();
     onScroll();
@@ -88,99 +89,99 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const isDark = mounted && resolvedTheme === "dark";
-  const skyHero = overHero && !isDark && !menuOpen;
-  const spaceHero = overHero && isDark && !menuOpen;
-  const heroNav = overHero && !menuOpen;
-
   return (
     <>
-      <motion.header
+      <header
         ref={headerRef}
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
         className={cn(
-          "fixed inset-x-0 top-0 z-[110] shell-x pb-3 pt-[max(0.875rem,env(safe-area-inset-top,0px))] transition-[background,backdrop-filter] duration-500",
+          "fixed inset-x-0 top-0 z-[110] px-4 pt-[max(0.75rem,env(safe-area-inset-top,0px))] md:px-6",
           menuOpen && "z-[130]",
-          scrolled && !heroNav && "border-b border-zinc-200/80 bg-white/80 backdrop-blur-lg dark:border-white/10 dark:bg-zinc-950/80",
         )}
       >
-        <div className="shell-x-inner flex items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <motion.div
+          initial={{ y: -16, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className={cn(
+            "mx-auto flex max-w-6xl items-center gap-3 rounded-2xl border px-2.5 py-2 transition-[box-shadow,background,border-color,transform] duration-500 md:gap-4 md:px-3 md:py-2.5",
+            scrolled || menuOpen
+              ? "border-border/80 bg-background/92 shadow-[0_12px_48px_-16px_rgba(28,25,23,0.18)] backdrop-blur-xl dark:shadow-[0_12px_48px_-16px_rgba(0,0,0,0.45)]"
+              : "border-border/50 bg-background/55 shadow-[0_4px_24px_-12px_rgba(28,25,23,0.08)] backdrop-blur-md",
+          )}
+        >
           <a
-            href="#o-mne"
-            className={cn(
-              "justify-self-start py-2 text-sm font-semibold tracking-wide transition-colors",
-              heroNav ? "text-white" : "text-zinc-900 dark:text-white",
-            )}
+            href={sectionHref(locale, "about")}
+            className="group flex min-w-0 shrink-0 items-center gap-2.5 rounded-xl px-2 py-1.5 transition hover:bg-stone-200/40 dark:hover:bg-white/[0.05]"
             onClick={() => setMenuOpen(false)}
           >
-            OV
+            <span className="flex size-9 items-center justify-center rounded-xl bg-accent text-sm font-semibold text-white dark:text-stone-900">
+              OV
+            </span>
+            <span className="hidden min-w-0 sm:block">
+              <span className="block truncate font-display text-base leading-tight text-foreground">
+                Ondřej Všetička
+              </span>
+              <span className="block truncate text-[11px] text-muted">
+                {t("brandSubtitle")}
+              </span>
+            </span>
           </a>
 
           <nav
-            className={cn(
-              "hidden items-center gap-6 rounded-full px-6 py-3 transition-all duration-500 lg:flex lg:justify-self-center",
-              skyHero
-                ? "border border-white/25 bg-white/10 backdrop-blur-md shadow-lg shadow-black/5"
-                : spaceHero
-                  ? "glass-hero"
-                  : "border border-zinc-200/80 bg-white/90 shadow-sm dark:border-white/10 dark:bg-zinc-950/70",
-            )}
+            className="hidden flex-1 items-center justify-center gap-0.5 lg:flex"
             aria-label={t("mainNav")}
           >
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "text-[0.6875rem] font-medium uppercase tracking-[0.1em] whitespace-nowrap transition-opacity duration-250 hover:opacity-55",
-                  heroNav ? "text-white" : "text-zinc-700 dark:text-white/80",
-                )}
+                className="group relative rounded-lg px-3 py-2 text-[13px] font-medium text-muted transition hover:bg-stone-200/35 hover:text-foreground dark:hover:bg-white/[0.05]"
               >
                 {link.label}
+                <span className="absolute inset-x-3 -bottom-px h-px origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
           </nav>
 
-          <div className="hidden items-center justify-self-end gap-2 lg:flex">
-            <LocaleSwitcher inverted={heroNav} />
-            <ThemeToggle inverted={heroNav} />
-            <a
-              href="mailto:ondravseta@email.cz"
-              className={cn(
-                "rounded-full border px-4 py-1.5 text-xs transition",
-                heroNav
-                  ? "border-white/15 text-white/80 hover:border-indigo-400/40 hover:text-white"
-                  : "border-zinc-200 text-zinc-700 hover:border-indigo-300 hover:text-indigo-700 dark:border-white/15 dark:text-white/80 dark:hover:border-indigo-400/40 dark:hover:text-white",
-              )}
-            >
-              {t("contact")}
-            </a>
-          </div>
+          <div className="ml-auto flex items-center gap-2 md:gap-2.5">
+            <div className="hidden items-center gap-0.5 rounded-xl border border-border/70 bg-stone-100/60 p-0.5 md:flex dark:bg-white/[0.04]">
+              <LocaleSwitcher variant="nav" />
+              <ThemeToggle variant="nav" />
+            </div>
 
-          <button
-            type="button"
-            className={cn(
-              "relative z-[1] -mr-1 inline-flex size-11 shrink-0 items-center justify-center rounded-full transition-[background,box-shadow,border-color] duration-[350ms] ease-out lg:hidden",
-              heroNav || menuOpen
-                ? "border-0 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
-                : "border border-zinc-200/80 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900",
-            )}
-            aria-expanded={menuOpen}
-            aria-controls="site-mobile-menu"
-            aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <HamburgerIcon open={menuOpen} />
-          </button>
-        </div>
-      </motion.header>
+            <Button
+              asChild
+              variant="primary"
+              size="sm"
+              className="hidden shadow-glow sm:inline-flex"
+            >
+              <a href="mailto:ondravseta@email.cz" className="gap-1.5">
+                {t("cta")}
+                <ArrowUpRight className="size-3.5" />
+              </a>
+            </Button>
+
+            <button
+              type="button"
+              className={cn(
+                "inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/80 bg-surface transition hover:bg-stone-200/40 lg:hidden dark:hover:bg-white/[0.05]",
+                menuOpen && "border-accent/30 bg-accent-soft/50",
+              )}
+              aria-expanded={menuOpen}
+              aria-controls="site-mobile-menu"
+              aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <HamburgerIcon open={menuOpen} />
+            </button>
+          </div>
+        </motion.div>
+      </header>
 
       <MobileMenu
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        links={links}
+        links={mobileLinks}
         headerOffsetPx={headerOffsetPx}
       />
     </>
